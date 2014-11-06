@@ -11,7 +11,17 @@ exports.info = function(req, res){
     done: function (errors, window) {
       var $ = window.$;
       if($("table").length > 0){
-        // get scores
+        var games = [];
+        $('.itemRowOnlineScoreAdvanced').each(function (index){
+          var game = {
+            "teams": $(this).find('.game').find('span').text(),
+            "score": $(this).find('.standing').find('span').text(),
+            "time": $(this).find('.time').find('span').text(),
+            "league": $(this).find('.league').find('span').text()
+          };
+          games.push(game);
+        })
+        res.end(JSON.stringify(games));
       }else{
         res.end("false");
       }
