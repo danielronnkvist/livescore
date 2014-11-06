@@ -17,8 +17,28 @@
     <![endif]-->
   </head>
   <body ng-controller="view">
-    <h1 class="text-center">Hello World</h1>
-    {{ page }}
+  <div class="container">
+    <h1 class="text-center">Livescore</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Match</td>
+          <td>Ställning</td>
+          <td>Tid</td>
+          <td>Liga</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="game in games">
+          <td>{{game.home.name}} - {{game.away.name}}</td>
+          <td>{{game.home.score}} - {{game.away.score}}</td>
+          <td>{{game.time}}</td>
+          <td>{{game.league}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>

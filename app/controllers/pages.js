@@ -13,9 +13,19 @@ exports.info = function(req, res){
       if($("table").length > 0){
         var games = [];
         $('.itemRowOnlineScoreAdvanced').each(function (index){
+          var teams = $(this).find('.game').find('span').text();
+          teams = teams.split(" - ");
+          var scores = $(this).find('.standing').find('span').text();
+          scores = scores.split(" - ");
           var game = {
-            "teams": $(this).find('.game').find('span').text(),
-            "score": $(this).find('.standing').find('span').text(),
+            "home": {
+              "name": teams[0],
+              "score": scores[0]
+            },
+            "away": {
+              "name": teams[1],
+              "score": scores[1]
+            },
             "time": $(this).find('.time').find('span').text(),
             "league": $(this).find('.league').find('span').text()
           };
