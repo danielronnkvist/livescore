@@ -26,11 +26,16 @@
           <td>Match</td>
           <td>Ställning</td>
           <td>Tid</td>
-          <td>Liga</td>
+          <td>
+            <select ng-model='selectedLeague'>
+              <option value="" selected="true">Alla serier</option>
+              <option ng-repeat="league in leagues" value="{{league}}">{{league}}</option>
+            </select>
+          </td>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="game in games">
+        <tr ng-repeat="game in games | filter:selectedLeague">
           <td>{{game.home.name}} - {{game.away.name}}</td>
           <td>{{game.home.score}} - {{game.away.score}}</td>
           <td>{{game.time}}</td>
