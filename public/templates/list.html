@@ -1,0 +1,26 @@
+<h1 class="text-center">Livescore</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <td>Match</td>
+      <td>Ställning</td>
+      <td>Tid</td>
+      <td>
+        <select ng-model='selectedLeague'>
+          <option value="" selected="true">Alla serier</option>
+          <option ng-repeat="league in leagues" value="{{league}}">{{league}}</option>
+        </select>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="game in games | filter:selectedLeague">
+      <a href="Match/{{game.home.name}}-{{game.away.name}}">
+        <td>{{game.home.name}} - {{game.away.name}}</td>
+        <td>{{game.home.score}} - {{game.away.score}}</td>
+        <td>{{game.time}}</td>
+        <td>{{game.league}}</td>
+      </a>
+    </tr>
+  </tbody>
+</table>
